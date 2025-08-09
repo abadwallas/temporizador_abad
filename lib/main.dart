@@ -401,22 +401,28 @@ class _RoundTimerPageState extends State<RoundTimerPage> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: _startTimer,
-                  child: const Text("Iniciar"),
+                  onPressed: (){
+                    if(isRunning){
+                      _startTimer();
+                    }else{
+                      _startTimer();
+                    }
+                  },
+                  child: Icon(isRunning ? Icons.restart_alt : Icons.play_arrow, size: 48),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: ElevatedButton(
                   onPressed: isRunning ? _pauseOrResume : null,
-                  child: Text(isPaused ? "Retomar" : "Pausar"),
+                  child: Icon(isPaused ? Icons.play_arrow : Icons.pause, size: 48),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: ElevatedButton(
                   onPressed: _stopAndReset,
-                  child: const Text("Zerar"),
+                  child: const Icon(Icons.stop, size: 48),
                 ),
               ),
             ],
